@@ -1,5 +1,5 @@
-import 'package:api_service_app/consts/global_colors.dart';
-import 'package:api_service_app/widgets/appbar_icons.dart';
+import 'package:store_app/consts/global_colors.dart';
+import 'package:store_app/widgets/appbar_icons.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';

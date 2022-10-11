@@ -1,5 +1,5 @@
-import 'package:api_service_app/consts/global_colors.dart';
-import 'package:api_service_app/screens/home_screen.dart';
+import 'package:store_app/consts/global_colors.dart';
+import 'package:store_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
