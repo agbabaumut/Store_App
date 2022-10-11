@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: size.height * 0.3,
                 child: Swiper(
                   autoplay: true,
-                  duration: 500,
+                  duration: 300,
                   itemCount: 4,
                   itemBuilder: (ctx, index) {
                     return const SaleWidget();
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: SwiperPagination(
                         alignment: Alignment.bottomCenter,
                         builder: DotSwiperPaginationBuilder(
-                          activeColor: Colors.blue,
+                          activeColor: Colors.orangeAccent,
                           color: Colors.grey,
                         )),
                   ),
