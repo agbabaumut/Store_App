@@ -1,10 +1,10 @@
 import 'package:store_app/consts/global_colors.dart';
 import 'package:store_app/widgets/appbar_icons.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
-import '../widgets/sale_widget.dart';
+import '../widgets/feeds_widget.dart';
+import '../widgets/sale_widget_with_swiper.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,32 +51,73 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              SearchBarWidget(textEditingController: _textEditingController),
-              SizedBox(
-                height: size.height * 0.3,
-                child: Swiper(
-                  autoplay: true,
-                  duration: 300,
-                  itemCount: 4,
-                  itemBuilder: (ctx, index) {
-                    return const SaleWidget();
-                  },
-                  pagination: const SwiperPagination(
-                    alignment: Alignment.bottomCenter,
-                    builder: SwiperPagination(
-                        alignment: Alignment.bottomCenter,
-                        builder: DotSwiperPaginationBuilder(
-                          activeColor: Colors.orangeAccent,
-                          color: Colors.grey,
-                        )),
-                  ),
-                ),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SearchBarWidget(textEditingController: _textEditingController),
+                const SizedBox(height: 10),
+                ScrollableProductWidget(size: size),
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ScrollableProductWidget extends StatelessWidget {
+  const ScrollableProductWidget({
+    Key? key,
+    required this.size,
+  }) : super(key: key);
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: size.height * 0.25, child: SaleWidgetWithSwiper(size: size)),
+          const LatestProducstBar(),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 30,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, crossAxisSpacing: 0.0, mainAxisSpacing: 0.0, childAspectRatio: 0.6),
+            itemBuilder: (ctx, index) {
+              return const FeedsWidget();
+            },
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class LatestProducstBar extends StatelessWidget {
+  const LatestProducstBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          const Text(
+            "Latest Products",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 18,
+            ),
+          ),
+          const Spacer(),
+          AppBarIcons(function: () {}, icon: IconlyBold.arrowRight2)
+        ],
       ),
     );
   }
