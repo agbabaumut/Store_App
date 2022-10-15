@@ -36,7 +36,7 @@ class SaleWidget extends StatelessWidget {
         child: Image.network(
           "https://i.ibb.co/vwB46Yq/shoes.png",
           width: double.infinity,
-          fit: BoxFit.contain,
+          fit: BoxFit.contain ,
         ),
       ),
     );

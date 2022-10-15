@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:store_app/widgets/sale_widget.dart';
 
 class SaleWidgetWithSwiper extends StatelessWidget {
-  const SaleWidgetWithSwiper({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
+  const SaleWidgetWithSwiper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.3,
+      height: 110,
       child: Swiper(
         autoplay: true,
         duration: 300,
