@@ -51,20 +51,7 @@ class FeedsWidget extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: FancyShimmerImage(
-                  height: size.height * 0.2,
-                  width: double.infinity,
-                  errorWidget: const Icon(
-                    IconlyBold.danger,
-                    color: Colors.red,
-                    size: 28,
-                  ),
-                  imageUrl: "https://i.ibb.co/vwB46Yq/shoes.png",
-                  boxFit: BoxFit.fill,
-                ),
-              ),
+              const FancyImageWidget(),
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.all(8.0),
@@ -85,6 +72,31 @@ class FeedsWidget extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class FancyImageWidget extends StatelessWidget {
+  const FancyImageWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: FancyShimmerImage(
+        height: 160,
+        width: double.infinity,
+        errorWidget: Icon(
+          IconlyBold.danger,
+          color: Colors.red,
+          size: size.height * 0.01,
+        ),
+        imageUrl: "https://i.ibb.co/vwB46Yq/shoes.png",
+        boxFit: BoxFit.fill,
       ),
     );
   }

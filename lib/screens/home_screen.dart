@@ -6,6 +6,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../widgets/feeds_widget.dart';
 import '../widgets/sale_widget_with_swiper.dart';
+import 'categories_screen.dart';
 import 'feeds_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,7 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: const Text("Home"),
           leading: AppBarIcons(
-            function: () {},
+            function: () {
+              Navigator.push(
+                context,
+                PageTransition(child: const CategoriesScreen(), type: PageTransitionType.leftToRight),
+              );
+            },
             icon: IconlyBold.category,
           ),
           actions: [

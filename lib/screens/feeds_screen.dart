@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'home_screen.dart';
-
 class FeedsScreen extends StatelessWidget {
   const FeedsScreen({Key? key}) : super(key: key);
 
@@ -11,9 +9,6 @@ class FeedsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
-      ),
-      body: ScrollableProductWidget(
-        size: size * 0.4,
       ),
     );
   }
