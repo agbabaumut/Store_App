@@ -13,10 +13,9 @@ class CategoriesReal extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         color: Colors.blue,
-        child: Stack(children: [
-          Opacity(
-            opacity: 0.4,
-            child: ClipRRect(
+        child: Stack(
+          children: [
+            ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: FancyShimmerImage(
                 width: size.width * 0.45,
@@ -25,17 +24,19 @@ class CategoriesReal extends StatelessWidget {
                 errorWidget: const Icon(IconlyBold.danger),
               ),
             ),
-          ),
-          Opacity(
-            opacity: 0.8,
-            child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Category Name",
-                  style: TextStyle(fontWeight: FontWeight.bold, backgroundColor: lightBackgroundColor),
-                )),
-          ),
-        ]),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Category Name",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  backgroundColor: lightBackgroundColor,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

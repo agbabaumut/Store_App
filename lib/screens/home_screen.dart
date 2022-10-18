@@ -1,5 +1,6 @@
 import 'package:page_transition/page_transition.dart';
 import 'package:store_app/consts/global_colors.dart';
+import 'package:store_app/screens/user_screen.dart';
 import 'package:store_app/widgets/appbar_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -52,7 +53,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             AppBarIcons(
-              function: () {},
+              function: () {
+                Navigator.push(
+                  context,
+                  PageTransition(child: const UserScreen(), type: PageTransitionType.leftToRight),
+                );
+              },
               icon: IconlyBold.user3,
             ),
           ],
