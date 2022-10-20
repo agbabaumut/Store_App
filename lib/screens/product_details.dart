@@ -1,16 +1,44 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:store_app/consts/global_colors.dart';
 
+import '../services/api_handler.dart';
+
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({Key? key}) : super(key: key);
+  late List productsList = [];
+  Future<void> getProducts() async {
+    productsList = (await APIHandler.getAllProducts());
+  }
+
+  ProductDetails({
+    Key? key,
+    required this.productsList,
+  }) : super(key: key);
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  @override
+  void initState() {
+    widget.getProducts();
+    setState(() {});
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   final titleStyle = const TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
@@ -90,7 +118,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 itemBuilder: (context, index) {
                   return FancyShimmerImage(
                     boxFit: BoxFit.contain,
-                    imageUrl: "https://i.ibb.co/vwB46Yq/shoes.png",
+                    imageUrl: widget.productsList[index].images![0],
                   );
                 },
               ),
@@ -104,16 +132,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "description",
+                    "${widget.productsList[3].title}",
                     style: titleStyle,
                   ),
                   const SizedBox(
                     height: 18,
                   ),
-                  const Text(
-                    "lorem ipsum msaopdmsadpsaodjaü",
+                  Text(
+                    "${widget.productsList[5].description}",
                     textAlign: TextAlign.start,
-                    style: TextStyle(fontSize: 25),
+                    style: const TextStyle(fontSize: 25),
                   )
                 ],
               ),

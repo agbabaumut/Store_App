@@ -32,6 +32,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
 
   @override
   void dispose() {
+    productsList = getProducts() as List<ProductsModel>;
     super.dispose();
   }
 

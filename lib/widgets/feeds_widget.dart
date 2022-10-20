@@ -54,7 +54,11 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    PageTransition(child: const ProductDetails(), type: PageTransitionType.bottomToTop),
+                    PageTransition(
+                        child: ProductDetails(
+                          productsList: productsList,
+                        ),
+                        type: PageTransitionType.bottomToTop),
                   );
                 },
                 child: Column(
@@ -72,7 +76,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                 style: const TextStyle(color: Color.fromRGBO(33, 150, 243, 1)),
                                 children: [
                                   TextSpan(
-                                      text: "168.00",
+                                      text: productsList[4].price.toString(),
                                       style: TextStyle(color: lightTextColor, fontWeight: FontWeight.w600))
                                 ],
                               ),
@@ -89,13 +93,13 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                         ? const CircularProgressIndicator()
                         : FancyImageWidget(imageurl: productsList[4].images![0]),
                     const SizedBox(height: 10),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Title",
+                        productsList[2].title.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 17,
                           //  fontFamily: 'Roboto',
                           fontWeight: FontWeight.w700,
