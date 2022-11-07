@@ -52,9 +52,11 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, crossAxisSpacing: 0.0, mainAxisSpacing: 0.0, childAspectRatio: 0.6),
                 itemBuilder: (ctx, index) {
-                  return FeedsWidget(
-                    imageUrl: productsList[index].images![0],
-                    title: productsList[index].title.toString(),
+                  return Expanded(
+                    child: FeedsWidget(
+                      imageUrl: productsList[index].images![index],
+                      title: productsList[index].title.toString(),
+                    ),
                   );
                 }),
           );

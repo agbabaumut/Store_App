@@ -15,7 +15,6 @@ class APIHandler {
       // print("V is ${v["title"]}");
       templist.add(v);
     }
-    print(templist);
 
     return ProductsModel.productFromSnapshot(templist);
   }

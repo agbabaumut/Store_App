@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _textEditingController = TextEditingController();
-getProduct();
+    getProduct();
     super.initState();
   }
 
@@ -57,46 +57,48 @@ getProduct();
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child:productsList.isEmpty? const CircularProgressIndicator(): Scaffold(
-        appBar: AppBar(
-          title: const Text("Home"),
-          leading: AppBarIcons(
-            function: () {
-              Navigator.push(
-                context,
-                PageTransition(child: const CategoriesScreen(), type: PageTransitionType.leftToRight),
-              );
-            },
-            icon: IconlyBold.category,
-          ),
-          actions: [
-            AppBarIcons(
-              function: () {
-                Navigator.push(
-                  context,
-                  PageTransition(child: const UserScreen(), type: PageTransitionType.leftToRight),
-                );
-              },
-              icon: IconlyBold.user3,
-            ),
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SearchBarWidget(textEditingController: _textEditingController),
-                const SizedBox(height: 10),
-                ScrollableProductWidget(
-                  size: size,
-                  productsList: productsList,
+      child: productsList.isEmpty
+          ? const CircularProgressIndicator()
+          : Scaffold(
+              appBar: AppBar(
+                title: const Text("homee"),
+                leading: AppBarIcons(
+                  function: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(child: const CategoriesScreen(), type: PageTransitionType.leftToRight),
+                    );
+                  },
+                  icon: IconlyBold.category,
                 ),
-              ],
+                actions: [
+                  AppBarIcons(
+                    function: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(child: const UserScreen(), type: PageTransitionType.leftToRight),
+                      );
+                    },
+                    icon: IconlyBold.user3,
+                  ),
+                ],
+              ),
+              body: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SearchBarWidget(textEditingController: _textEditingController),
+                      const SizedBox(height: 10),
+                      ScrollableProductWidget(
+                        size: size,
+                        productsList: productsList,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
